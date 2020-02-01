@@ -81,6 +81,11 @@ public class RolyPolyController : MonoBehaviour
             //print("anchor!");
             SetAnchor(collision.contacts[0].normal);
         }
+
+        if (rolling && collision.collider.GetComponent<Entity>())
+        {
+            collision.collider.GetComponent<Entity>().TakeDamage(1);
+        }
     }
 
     //TODO: Corrections for controller climbing!

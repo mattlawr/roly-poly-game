@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
     public SpriteRenderer sprite;
-
     public int health = 10;
 
     const bool _FACELEFT = false;    // Which direction sprite images face
+
+    [Header("Events")]
+    [Space]
+
+    public UnityEvent OnHit;  // For TakeDamage
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +25,14 @@ public class Entity : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // Can be overridden
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+
+        OnHit.Invoke();
     }
 
     // -1 = left, +1 = right

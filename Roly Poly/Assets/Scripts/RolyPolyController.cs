@@ -83,16 +83,6 @@ public class RolyPolyController : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionStay2D(Collision2D collision)
-    {
-        print("STAY roll: " + rolling);
-        if (collision.collider.tag == "Untagged" && !rolling && !anchored)
-        {
-            print("anchor! STAY");
-            SetAnchor(collision.contacts[0].normal);
-        }
-    }*/
-
     //TODO: Corrections for controller climbing!
     public void Move(Vector2 move, bool roll, bool release)
     {

@@ -69,6 +69,8 @@ public class RolyPolyController : MonoBehaviour
                 }
             }
         }
+
+        
     }
 
     // Check for wall climbing
@@ -121,6 +123,20 @@ public class RolyPolyController : MonoBehaviour
                 correctCrawl = true;
             }
 
+            // Check if going off edge
+            if (true)
+            {
+                Vector3 dir = GetForward() - transform.up * 1.5f;
+
+                Ray r = new Ray(transform.position, dir.normalized);
+                Debug.DrawRay(r.origin, r.direction, Color.red);
+
+                if (!Physics2D.Raycast(r.origin, r.direction, 1f, LayerMask.GetMask("Default")))
+                {
+                    targetVelocity = Vector2.zero;
+                }
+            }
+
 
             // And then smoothing it out and applying it to the character
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
@@ -140,7 +156,7 @@ public class RolyPolyController : MonoBehaviour
         if (release)
         {
             rolling = false;
-            print("RELEASE");
+            //print("RELEASE");
         }
 
         // Roll
@@ -151,7 +167,7 @@ public class RolyPolyController : MonoBehaviour
 
             // Add a force to the player.
             //m_Grounded = false;
-            rb.velocity = (targetVelocity + (player.FacingRight() ? -transform.right : transform.right)/5f).normalized * rollStrength;
+            rb.velocity = (targetVelocity + GetForward()/5f).normalized * rollStrength;
         }
 
         lastMove = move;
@@ -184,5 +200,10 @@ public class RolyPolyController : MonoBehaviour
     void SetDirection(float direction)
     {
         player.SetSpriteDirection(direction);
+    }
+
+    Vector3 GetForward()
+    {
+        return (player.FacingRight() ? transform.right : -transform.right);
     }
 }

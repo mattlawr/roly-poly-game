@@ -41,6 +41,6 @@ public class Entity : MonoBehaviour
 
     public bool FacingRight()
     {
-        return (sprite.flipX == !_FACELEFT);
+        return (sprite.flipX == _FACELEFT);
     }
 }

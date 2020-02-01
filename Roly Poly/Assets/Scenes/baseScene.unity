@@ -364,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175158284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 3.47, z: 0}
+  m_LocalPosition: {x: -3.69, y: 5.79, z: 0}
   m_LocalScale: {x: 10.217999, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -384,8 +384,8 @@ GameObject:
   - component: {fileID: 1416665050}
   - component: {fileID: 1416665053}
   - component: {fileID: 1416665052}
-  m_Layer: 0
-  m_Name: roly
+  m_Layer: 8
+  m_Name: rolySide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,8 +610,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524289335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -4.964, z: 0}
-  m_LocalScale: {x: 10, y: 2, z: 1}
+  m_LocalPosition: {x: 3.6169999, y: -4.964, z: 0}
+  m_LocalScale: {x: 24.27, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -743,8 +743,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862794060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.35, y: -0.938, z: 0}
-  m_LocalScale: {x: 3, y: 8.064, z: 1}
+  m_LocalPosition: {x: 6.33, y: -2.854, z: 0}
+  m_LocalScale: {x: 2.9569323, y: 4.2335997, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -850,8 +850,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035425005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4, y: -0.938, z: 0}
-  m_LocalScale: {x: 3, y: 8.064, z: 1}
+  m_LocalPosition: {x: -9.95, y: -0.176, z: 0}
+  m_LocalScale: {x: 3, y: 9.588097, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5

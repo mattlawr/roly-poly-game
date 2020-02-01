@@ -8,6 +8,8 @@ public class Entity : MonoBehaviour
 
     public int health = 10;
 
+    const bool _FACELEFT = false;    // Which direction sprite images face
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +20,22 @@ public class Entity : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // -1 = left, +1 = right
+    public void SetSpriteDirection(float d)
+    {
+        if (!sprite) { return; }
+
+        bool unflipped = sprite.flipX != _FACELEFT;
+
+        if (d > 0 && unflipped)
+        {
+            sprite.flipX = _FACELEFT;
+        }
+        else if (d < 0 && !unflipped)
+        {
+            sprite.flipX = !_FACELEFT;
+        }
     }
 }

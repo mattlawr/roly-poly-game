@@ -38,4 +38,9 @@ public class Entity : MonoBehaviour
             sprite.flipX = !_FACELEFT;
         }
     }
+
+    public bool FacingRight()
+    {
+        return (sprite.flipX == !_FACELEFT);
+    }
 }

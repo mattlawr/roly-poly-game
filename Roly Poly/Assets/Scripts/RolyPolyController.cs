@@ -16,6 +16,11 @@ public class RolyPolyController : MonoBehaviour
     private Vector2 upAnchor = Vector3.up;
     private Vector3 velocity = Vector3.zero;
     bool anchored = false;
+    bool rolling = false;
+    private Vector2 lastMove = Vector3.zero;
+    private bool correctCrawl = false;
+
+    private float gravity = 0f;
 
     [Header("Events")]
     [Space]
@@ -26,6 +31,8 @@ public class RolyPolyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+
+        gravity = rb.gravityScale;
     }
 
     // Start is called before the first frame update
@@ -36,45 +43,142 @@ public class RolyPolyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if (!rolling && !anchored)
+        {
+            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position - transform.up*0.4f, 0.12f);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].gameObject != gameObject)
+                {
+                    print("anchor! STAY");
+                    SetAnchor(transform.up);
+                    return;
+                }
+            }
+
+            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.4f, 0.12f);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].gameObject != gameObject)
+                {
+                    print("anchor! Ground");
+                    SetAnchor(Vector3.up);
+                    return;
+                }
+            }
+        }
     }
 
     // Check for wall climbing
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Untagged")
+        if(collision.collider.tag == "Untagged" && !rolling)
         {
-            //SetAnchor(collision.contacts[0].normal);
+            //print("anchor!");
+            SetAnchor(collision.contacts[0].normal);
         }
     }
 
-    public void Move(float move, bool roll)
+    /*private void OnCollisionStay2D(Collision2D collision)
     {
-        //only control the player if grounded or airControl is allowed
-        if (anchored || airControl > 0f)
+        print("STAY roll: " + rolling);
+        if (collision.collider.tag == "Untagged" && !rolling && !anchored)
         {
-            // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * speed * 100f, rb.velocity.y);
+            print("anchor! STAY");
+            SetAnchor(collision.contacts[0].normal);
+        }
+    }*/
+
+    //TODO: Corrections for controller climbing!
+    public void Move(Vector2 move, bool roll, bool release)
+    {
+        Vector3 targetVelocity = Vector3.zero;
+
+        //only control here if grounded
+        if (anchored)
+        {
+            int trueVertical = (transform.up.x < 0.1f) ? 1 : -1;
+
+            // If on ground/ceiling
+            int vertical = (transform.up.y > -0.1f) ? 1 : -1;
+            float moveC = move.x;   // Correction for continuous crawl
+            // If on side...
+            if(transform.up.x > 0.5f || transform.up.x < -0.5f)
+            {
+                vertical = (transform.up.x > -0.1f) ? 1 : -1;
+                moveC = move.y * -vertical;
+            }
+
+            // Move the character by finding the target velocity using (correction)
+            //targetVelocity = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector2(moveC * speed * 100f, 0);
+
+            // Override with real directions after player changes inputs
+            if (lastMove != move || correctCrawl)
+            {
+                targetVelocity = (move * speed * 100f) * transform.right * trueVertical;
+                correctCrawl = true;
+            }
+
+
             // And then smoothing it out and applying it to the character
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
 
-            SetDirection(move);
+            SetDirection(moveC);
+        }
+
+        // Air movement
+        if(!anchored && rolling && airControl > 0f)
+        {
+            targetVelocity = new Vector2 ((move.x * speed * airControl * 10f), 0f);
+
+            rb.velocity = rb.velocity + (Vector2)targetVelocity;
+        }
+
+        // Release
+        if (release)
+        {
+            rolling = false;
+            print("RELEASE");
         }
 
         // Roll
         if (anchored && roll)
         {
+            rolling = true;
+            UnAnchor();
+
             // Add a force to the player.
             //m_Grounded = false;
-            rb.AddForce(new Vector2(0f, rollStrength));
+            rb.velocity = (targetVelocity + (player.FacingRight() ? -transform.right : transform.right)/5f).normalized * rollStrength;
         }
+
+        lastMove = move;
     }
 
     // Sets controller to either stick to a wall or unstick
     void SetAnchor(Vector2 norm)
     {
+        Quaternion q = Quaternion.FromToRotation(Vector2.up, norm);
+
         rb.velocity = Vector3.zero;
-        //rb.isKinematic = true;
+        rb.gravityScale = 0f;
+
+        //transform.position = pos;
+
+        transform.rotation = q;
+        //print(q + ", " + norm);
+
+        correctCrawl = false;
+        anchored = true;
+    }
+
+    void UnAnchor()
+    {
+        rb.gravityScale = gravity;
+
+        anchored = false;
     }
 
     void SetDirection(float direction)

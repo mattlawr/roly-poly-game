@@ -6,8 +6,9 @@ public class Player : Entity
 {
     public RolyPolyController controller;
 
-    float horizontal = 0f;
-    float vertical = 0f;
+    Vector2 input = Vector2.zero;
+    bool roll = false;
+    bool release = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,17 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            roll = true;
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            release = true;
+        }
     }
 
     private void FixedUpdate()
@@ -29,6 +39,8 @@ public class Player : Entity
             return;
         }
 
-        controller.Move(horizontal * Time.fixedDeltaTime, false);
+        controller.Move(input * Time.fixedDeltaTime, roll, release);
+
+        roll = release = false;
     }
 }

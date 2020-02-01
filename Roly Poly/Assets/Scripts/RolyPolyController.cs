@@ -47,7 +47,7 @@ public class RolyPolyController : MonoBehaviour
         if (true || airControl > 0f)
         {
             // Move the character by finding the target velocity
-            Vector3 targetVelocity = new Vector2(move * speed * 10f, rb.velocity.y);
+            Vector3 targetVelocity = new Vector2(move * speed * 100f, rb.velocity.y);
             // And then smoothing it out and applying it to the character
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
 

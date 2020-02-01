@@ -8,8 +8,6 @@ public class Entity : MonoBehaviour
 
     public int health = 10;
 
-    public float gravity;
-
     // Start is called before the first frame update
     void Start()
     {

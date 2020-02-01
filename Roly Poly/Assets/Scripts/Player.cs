@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public float speed = 2f;
-    public LayerMask groundLayers;
+    public RolyPolyController controller;
 
-    private Rigidbody2D rb;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    float horizontal = 0f;
+    float vertical = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +18,17 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
-        
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+    }
+
+    private void FixedUpdate()
+    {
+        if (!controller)
+        {
+            return;
+        }
+
+        controller.Move(horizontal * Time.fixedDeltaTime, false);
     }
 }

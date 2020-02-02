@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: 533942541053910294
     second: roly-poly-walk_3
+  - first:
+      213: -6474084793278465497
+    second: roly-poly-walk_4
+  - first:
+      213: 1873585894288143842
+    second: roly-poly-walk_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -59,7 +65,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -124,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d00bb1519b6f59e4b8e09df099517d1e
+      spriteID: dcbf27f09bfce494da8352befd0d8d3a
       internalID: 1999263715911734581
       vertices: []
       indices: 
@@ -145,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e6ec37725c9bc14d971b29a5d72e663
+      spriteID: 06c1b01b389380048956c7244b1cd1ee
       internalID: 8898261460278287151
       vertices: []
       indices: 
@@ -166,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c0967913e8594d4f8b3a060e2eb0d55
+      spriteID: 1ac5c73c95f70364db36f8ef3c62567e
       internalID: 5480312291587492760
       vertices: []
       indices: 
@@ -187,8 +193,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55ff89296c477964c91a0d0bee78e6a1
+      spriteID: 6416b8188355bdf488c327cbc936aeae
       internalID: 533942541053910294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roly-poly-walk_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd1d8e4adbdb5447b047a3169a59939
+      internalID: -6474084793278465497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roly-poly-walk_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d849a4286047bdd4e980dbc74be0109c
+      internalID: 1873585894288143842
       vertices: []
       indices: 
       edges: []

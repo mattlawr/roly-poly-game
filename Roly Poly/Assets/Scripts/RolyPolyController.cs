@@ -78,7 +78,7 @@ public class RolyPolyController : MonoBehaviour
         // check wall
         if (anchored)
         {
-            Vector3 dir = GetForward();
+            Vector3 dir = player.GetForward();
 
             Ray r = new Ray(transform.position-(transform.up*0.1f), dir.normalized);
             Debug.DrawRay(r.origin, r.direction, Color.red);
@@ -142,7 +142,7 @@ public class RolyPolyController : MonoBehaviour
             // Check if going off edge
             if (true)
             {
-                Vector3 dir = GetForward() - transform.up * 1.5f;
+                Vector3 dir = player.GetForward() - transform.up * 1.5f;
 
                 Ray r = new Ray(transform.position, dir.normalized);
                 Debug.DrawRay(r.origin, r.direction, Color.red);
@@ -185,7 +185,7 @@ public class RolyPolyController : MonoBehaviour
 
             // Add a force to the player.
             //m_Grounded = false;
-            rb.velocity = (targetVelocity + GetForward()/5f).normalized * rollStrength;
+            rb.velocity = (targetVelocity + player.GetForward()/5f).normalized * rollStrength;
         }
 
         lastMove = move;
@@ -202,9 +202,16 @@ public class RolyPolyController : MonoBehaviour
         transform.rotation = q;
         //print(q + ", " + norm);
 
+        float px = transform.position.x;
+
+        if(!Physics2D.Raycast(transform.position, -transform.up, 0.6f, LayerMask.GetMask("Default")))
+        {
+            px = point.x;
+        }
+
         if((Vector2)transform.position != point && transform.up.y > 0.1f)
         {
-            transform.position = new Vector2(transform.position.x, point.y + 0.5f);
+            transform.position = new Vector2(px, point.y + 0.5f);
         }
 
         correctCrawl = false;
@@ -223,8 +230,4 @@ public class RolyPolyController : MonoBehaviour
         player.SetSpriteDirection(direction);
     }
 
-    Vector3 GetForward()
-    {
-        return (player.FacingRight() ? transform.right : -transform.right);
-    }
 }

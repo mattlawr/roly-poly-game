@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private Transform worldMap;
     private Vector3 firstPos;
 
+    public float cameraSpeed = 10f;
+
     public static GameManager instance = null;
 
     private void Awake()
@@ -61,12 +63,12 @@ public class GameManager : MonoBehaviour
 
             Vector3 follow = transform.position;
 
-            if(diff > 3f || diff < -2f)
+            if(diff > 3f || diff < 4f)
             {
                 follow += new Vector3(0, diff/10f);
             }
 
-            transform.position = follow;
+            transform.position = Vector3.Lerp(transform.position, follow, cameraSpeed * Time.deltaTime);
         }
     }
 

@@ -57,4 +57,9 @@ public class Entity : MonoBehaviour
     {
         return (sprite.flipX == _FACELEFT);
     }
+
+    public Vector3 GetForward()
+    {
+        return (FacingRight() ? transform.right : -transform.right);
+    }
 }

@@ -20108,3 +20108,4 @@ MonoBehaviour:
   rolySidePrefab: {fileID: 555592227285854846, guid: dbd81931f81884146be11a725692b7db,
     type: 3}
   levelsParent: {fileID: 126652251}
+  cameraSpeed: 40

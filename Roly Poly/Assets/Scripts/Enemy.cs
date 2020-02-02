@@ -45,7 +45,7 @@ public class Enemy : Entity
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<Entity>().TakeDamage(1);
+            collision.collider.GetComponent<Entity>().TakeDamage(1, -collision.contacts[0].normal);
             //TODO: addforce
         }
     }

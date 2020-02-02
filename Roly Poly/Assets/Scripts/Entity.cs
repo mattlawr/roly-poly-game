@@ -36,6 +36,18 @@ public class Entity : MonoBehaviour
 
         OnHit.Invoke();
     }
+    public void TakeDamage(int dmg, Vector2 force)
+    {
+        health -= dmg;
+
+        // Push this
+        if (GetComponent<Rigidbody2D>())
+        {
+
+        }
+
+        OnHit.Invoke();
+    }
 
     // -1 = left, +1 = right
     public void SetSpriteDirection(float d)

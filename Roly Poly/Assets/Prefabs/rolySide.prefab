@@ -124,7 +124,7 @@ MonoBehaviour:
   fxPrefab: {fileID: 3303268692281233509, guid: 362e80e0aba75f145a57f6e6dfe41794,
     type: 3}
   anim: {fileID: 8408324702083980810}
-  health: 5
+  health: 3
   OnHit:
     m_PersistentCalls:
       m_Calls:

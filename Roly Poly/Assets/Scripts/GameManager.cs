@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public Transform levelsParent;
     private Level[] levels;
+    int currLevel = 0;
 
     public HeartBar hearts;
 
@@ -86,6 +87,8 @@ public class GameManager : MonoBehaviour
 
         ResetCamera();
 
+        currLevel = id;
+
         roly = levels[id].StartLevel(rolySidePrefab);
     }
 
@@ -100,6 +103,17 @@ public class GameManager : MonoBehaviour
     public void HeartsAdd(int d)
     {
         hearts.UpdateHearts(d);
+    }
+
+    public IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(3f);
+
+        levels[currLevel].LeaveLevel();
+
+        HeartsAdd(10);
+
+        yield return null;
     }
 
     //******** SOUND

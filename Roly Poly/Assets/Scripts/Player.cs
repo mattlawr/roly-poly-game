@@ -65,5 +65,18 @@ public class Player : Entity
         hitstun = 0.6f;
 
         base.TakeDamage(d, force);
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        controller.Stun(true);
+        hitstun = 100f;
+
+        GameManager.instance.StartCoroutine("RestartLevel");
     }
 }

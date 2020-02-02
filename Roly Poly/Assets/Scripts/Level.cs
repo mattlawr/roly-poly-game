@@ -30,7 +30,7 @@ public class Level : MonoBehaviour
 
         gameObject.SetActive(true);// enable level
 
-        player = Instantiate(roly, transform.position, Quaternion.identity);
+        player = Instantiate(roly, transform.position+Vector3.up*3f, Quaternion.identity);
 
         return player;
     }

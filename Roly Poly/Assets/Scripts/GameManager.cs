@@ -10,6 +10,22 @@ public class GameManager : MonoBehaviour
 
     private Transform worldMap;
 
+    public static GameManager instance = null;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        //DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +60,7 @@ public class GameManager : MonoBehaviour
         levels[id].StartLevel(rolySidePrefab);
     }
 
-    public void ExitLevel(int id)
+    public void ExitLevel()
     {
         worldMap.gameObject.SetActive(true);
 

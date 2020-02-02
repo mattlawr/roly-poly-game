@@ -8,6 +8,8 @@ public class Level : MonoBehaviour
 
     private Player player;
 
+    const float _MAX_X = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,10 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(player && (player.transform.position.x > _MAX_X || player.transform.position.x < -_MAX_X))
+        {
+            LeaveLevel();
+        }
     }
 
     public void StartLevel(Player roly)
@@ -28,8 +33,12 @@ public class Level : MonoBehaviour
         player = Instantiate(roly, transform.position, Quaternion.identity);
     }
 
-    public void CompleteLevel()
+    public void LeaveLevel()
     {
         GameObject.Destroy(player.gameObject);
+
+        GameManager.instance.ExitLevel();
+
+        gameObject.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviour
 {
     public SpriteRenderer sprite;
+    public GameObject fxPrefab;
     public Animator anim;
     public int health = 10;
 
@@ -61,5 +62,12 @@ public class Entity : MonoBehaviour
     public Vector3 GetForward()
     {
         return (FacingRight() ? transform.right : -transform.right);
+    }
+
+    public void SpawnFX()
+    {
+        if (!fxPrefab) { return; }
+
+        GameObject fxObj = (GameObject)Instantiate(fxPrefab, transform.position, Quaternion.identity);
     }
 }

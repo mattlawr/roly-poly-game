@@ -63,7 +63,7 @@ public class RolyPolyController : MonoBehaviour
                 return;
             }
 
-            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.4f, 0.15f);
+            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.3f, 0.2f);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
@@ -97,7 +97,7 @@ public class RolyPolyController : MonoBehaviour
     // Check for wall climbing
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Untagged" && !rolling)
+        if(collision.collider.tag == "Untagged" && collision.gameObject.layer == 0 && !rolling)
         {
             //print("anchor!");
             SetAnchor(collision.contacts[0].normal, collision.contacts[0].point);
@@ -181,6 +181,8 @@ public class RolyPolyController : MonoBehaviour
         {
             rolling = true;
             player.anim.SetTrigger("roll");
+            GameManager.instance.PlaySingle("powerup");
+
             UnAnchor();
 
             // Add a force to the player.

@@ -5128,7 +5128,7 @@ PrefabInstance:
     - target: {fileID: 6891490347959619369, guid: 579b6545e675dba439ce157a65eb1b1c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6891490347959619369, guid: 579b6545e675dba439ce157a65eb1b1c,
         type: 3}
@@ -20106,6 +20106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rolySidePrefab: {fileID: 555592227285854846, guid: dbd81931f81884146be11a725692b7db,
+    type: 3}
+  soundPrefab: {fileID: 6112394672762427767, guid: ec3f7f8e821771643a9f8a6630b5601f,
     type: 3}
   levelsParent: {fileID: 126652251}
   cameraSpeed: 40

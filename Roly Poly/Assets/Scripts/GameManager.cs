@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Player rolySidePrefab;
     private Player roly;
+    public GameObject soundPrefab;
 
     public Transform levelsParent;
     private Level[] levels;
@@ -93,4 +94,30 @@ public class GameManager : MonoBehaviour
         worldMap.gameObject.SetActive(true);
 
     }
+
+
+    //******** SOUND
+
+    public void PlaySong()
+    {
+
+    }
+
+    public void PlaySingle(string soundName)
+    {
+        if (soundName == "") { return; }
+        GameObject fxObj = (GameObject)Instantiate(soundPrefab, Vector3.zero, Quaternion.identity);
+        if (GameObject.Find("_effects")) { fxObj.transform.parent = GameObject.Find("_effects").transform; }
+
+        AudioSource asource = fxObj.GetComponent<AudioSource>();
+        AudioClip a = (AudioClip)Resources.Load(soundName);
+        asource.clip = a;
+        fxObj.GetComponent<SelfDestruct>().duration = asource.clip.length;
+        asource.spatialBlend = 0f;
+
+        asource.volume = 1f * 0.7f;
+
+        asource.Play();
+    }
+
 }

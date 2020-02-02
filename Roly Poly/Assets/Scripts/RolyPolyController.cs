@@ -70,7 +70,7 @@ public class RolyPolyController : MonoBehaviour
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    print("anchor! STAY");
+                    //print("anchor! STAY");
                     SetAnchor(transform.up, transform.position);
                     return;
                 }
@@ -86,7 +86,7 @@ public class RolyPolyController : MonoBehaviour
             {
                 if (colliders[i].gameObject != gameObject)
                 {
-                    print("anchor! Ground");
+                    //print("anchor! Ground");
                     SetAnchor(Vector3.up, transform.position);
                     return;
                 }
@@ -107,7 +107,7 @@ public class RolyPolyController : MonoBehaviour
             {
                 SetAnchor(rc.normal, rc.point);
                 player.anim.SetTrigger("corner");
-                print("corner!");
+                //print("corner!");
             }
         }
 
@@ -128,7 +128,7 @@ public class RolyPolyController : MonoBehaviour
             SetAnchor(collision.contacts[0].normal, collision.contacts[0].point);
         }
 
-        float diff = Mathf.Abs(Vector3.Angle(-collision.contacts[0].normal, rb.velocity.normalized));
+        float diff = Mathf.Abs(Vector3.Angle(-collision.contacts[0].normal, -collision.contacts[0].relativeVelocity));
 
         if (rolling && (rollCharge > 0f || rb.velocity.magnitude > 1f) && diff < 15f && collision.collider.GetComponent<Entity>())
         {

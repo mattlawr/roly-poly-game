@@ -11,6 +11,9 @@ public class RolyPolyController : MonoBehaviour
     [Range(0, 1f)] public float airControl = 0.5f;
     //public LayerMask groundLayers;
 
+    public ParticleSystem dust;
+    public TrailRenderer trail;
+
     private Player player;
     private Rigidbody2D rb;
     private Vector2 upAnchor = Vector3.up;
@@ -88,6 +91,8 @@ public class RolyPolyController : MonoBehaviour
             if (rc)
             {
                 SetAnchor(rc.normal, rc.point);
+                player.anim.SetTrigger("corner");
+                print("corner!");
             }
         }
 
@@ -157,6 +162,11 @@ public class RolyPolyController : MonoBehaviour
             // And then smoothing it out and applying it to the character
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
 
+            if(rb.velocity.magnitude > 0.1f)
+            {
+                dust.Emit(1);
+            }
+
             SetDirection(moveC);
         }
 
@@ -172,6 +182,8 @@ public class RolyPolyController : MonoBehaviour
         if (release)
         {
             rolling = false;
+            trail.emitting = false;
+
             player.anim.SetTrigger("anchor");
             //print("RELEASE");
         }
@@ -182,6 +194,7 @@ public class RolyPolyController : MonoBehaviour
             rolling = true;
             player.anim.SetTrigger("roll");
             GameManager.instance.PlaySingle("powerup");
+            trail.emitting = true;
 
             UnAnchor();
 

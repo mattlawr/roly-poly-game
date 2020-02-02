@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 8b5e789dbd387c441b826ffb71ea3a78
+guid: 00381ffca33e14c489dc501abcba8482
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3964188603255820159
-    second: jumpyflwr_0
+      213: 570190173048101354
+    second: dyingsunflwr_0
   - first:
-      213: -5373010651217499210
-    second: jumpyflwr_1
+      213: 3343106807314598224
+    second: dyingsunflwr_1
   - first:
-      213: 7911900105842416013
-    second: jumpyflwr_2
+      213: -3107140778333847898
+    second: dyingsunflwr_2
   - first:
-      213: 3242825273712461686
-    second: jumpyflwr_3
+      213: -3386490070331477517
+    second: dyingsunflwr_3
+  - first:
+      213: -2389814334397347645
+    second: dyingsunflwr_4
+  - first:
+      213: -5315264604021855011
+    second: dyingsunflwr_5
+  - first:
+      213: 2343805573565508520
+    second: dyingsunflwr_6
+  - first:
+      213: 6191345205597397852
+    second: dyingsunflwr_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -57,9 +69,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -94,23 +106,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jumpyflwr_0
+      name: dyingsunflwr_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37d57dda1f68ccf49ac30e0a223672be
-      internalID: -3964188603255820159
+      spriteID: 3e62c8cc738ac2a48b41487ecb445137
+      internalID: 570190173048101354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jumpyflwr_1
+      name: dyingsunflwr_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 707e075f1456ac94fbd8de6495d87f0f
-      internalID: -5373010651217499210
+      spriteID: 98d06c5d70e75d244ab1716957901b61
+      internalID: 3343106807314598224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jumpyflwr_2
+      name: dyingsunflwr_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71a5294e7de18b546bb68119e438ca35
-      internalID: 7911900105842416013
+      spriteID: 54b8ec2f2579b924b9cccda41272c6db
+      internalID: -3107140778333847898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jumpyflwr_3
+      name: dyingsunflwr_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,8 +187,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b14f1c5dec212534bbb44b15abd322bb
-      internalID: 3242825273712461686
+      spriteID: 34c2dace0943b2e4198d13f2c995a7d5
+      internalID: -3386490070331477517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dyingsunflwr_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a462c6fedebb848980a25fab2f9c3f
+      internalID: -2389814334397347645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dyingsunflwr_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea1e4bf319097340bfb3b389c3c9e6d
+      internalID: -5315264604021855011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dyingsunflwr_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204527c24a1d0f144a56b490ae6b7744
+      internalID: 2343805573565508520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dyingsunflwr_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9c6f93ead65c14e810881d84f4cdbe
+      internalID: 6191345205597397852
       vertices: []
       indices: 
       edges: []

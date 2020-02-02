@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviour
 {
     public SpriteRenderer sprite;
+    public GameObject fxPrefab;
     public Animator anim;
     public int health = 10;
 
@@ -35,6 +36,16 @@ public class Entity : MonoBehaviour
 
         OnHit.Invoke();
     }
+    public virtual void TakeDamage(int dmg, Vector2 force)
+    {
+        // Push this
+        if (GetComponent<Rigidbody2D>())
+        {
+            GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        }
+
+        TakeDamage(dmg);
+    }
 
     // -1 = left, +1 = right
     public void SetSpriteDirection(float d)
@@ -61,5 +72,12 @@ public class Entity : MonoBehaviour
     public Vector3 GetForward()
     {
         return (FacingRight() ? transform.right : -transform.right);
+    }
+
+    public void SpawnFX()
+    {
+        if (!fxPrefab) { return; }
+
+        GameObject fxObj = (GameObject)Instantiate(fxPrefab, transform.position, Quaternion.identity);
     }
 }

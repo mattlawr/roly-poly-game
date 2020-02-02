@@ -41,11 +41,13 @@ public class Enemy : Entity
         anim.SetFloat("speed", rb.velocity.magnitude);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<Entity>().TakeDamage(1);
+            Vector2 dir = (collision.transform.position - transform.position).normalized;
+
+            collision.collider.GetComponent<Entity>().TakeDamage(1, dir*2f + Vector2.up * 5f);
             //TODO: addforce
         }
     }

@@ -10,6 +10,8 @@ public class Player : Entity
     bool roll = false;
     bool release = false;
 
+    float hitstun = -1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
+        hitstun -= Time.deltaTime;
+
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (Input.GetButtonDown("Jump"))
@@ -30,11 +34,17 @@ public class Player : Entity
         {
             release = true;
         }
+
+        if(controller.stunned && hitstun <= 0f)
+        {
+            sprite.color = Color.white;
+            controller.Stun(false);
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!controller)
+        if (!controller || controller.stunned)
         {
             return;
         }
@@ -42,5 +52,31 @@ public class Player : Entity
         controller.Move(input * Time.fixedDeltaTime, roll, release);
 
         roll = release = false;
+    }
+
+    override public void TakeDamage(int d, Vector2 force)
+    {
+        if(hitstun > -0.2f || controller.rolling) { return; }
+
+        GameManager.instance.HeartsAdd(-d);
+
+        sprite.color = Color.red;
+        controller.Stun(true);
+        hitstun = 0.6f;
+
+        base.TakeDamage(d, force);
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        controller.Stun(true);
+        hitstun = 100f;
+
+        GameManager.instance.StartCoroutine("RestartLevel");
     }
 }

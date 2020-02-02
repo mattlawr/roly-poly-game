@@ -5,10 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Player rolySidePrefab;
+    private Player roly;
+    public GameObject soundPrefab;
+
     public Transform levelsParent;
     private Level[] levels;
 
     private Transform worldMap;
+    private Vector3 firstPos;
+
+    public float cameraSpeed = 10f;
 
     public static GameManager instance = null;
 
@@ -31,6 +37,8 @@ public class GameManager : MonoBehaviour
     {
         worldMap = transform.GetChild(0);// First child
 
+        firstPos = transform.position;
+
         if (levelsParent)
         {
             levels = new Level[levelsParent.childCount];
@@ -50,19 +58,66 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (roly)
+        {
+            float diff = roly.transform.position.y - transform.position.y;
+
+            Vector3 follow = transform.position;
+
+            if(diff > 3f || diff < 4f)
+            {
+                follow += new Vector3(0, diff/10f);
+            }
+
+            transform.position = Vector3.Lerp(transform.position, follow, cameraSpeed * Time.deltaTime);
+        }
+    }
+
+    void ResetCamera()
+    {
+        transform.position = firstPos;
     }
 
     public void EnterLevel(int id)
     {
         worldMap.gameObject.SetActive(false);
 
-        levels[id].StartLevel(rolySidePrefab);
+        ResetCamera();
+
+        roly = levels[id].StartLevel(rolySidePrefab);
     }
 
     public void ExitLevel()
     {
+        ResetCamera();
+
         worldMap.gameObject.SetActive(true);
 
     }
+
+
+    //******** SOUND
+
+    public void PlaySong()
+    {
+
+    }
+
+    public void PlaySingle(string soundName)
+    {
+        if (soundName == "") { return; }
+        GameObject fxObj = (GameObject)Instantiate(soundPrefab, Vector3.zero, Quaternion.identity);
+        if (GameObject.Find("_effects")) { fxObj.transform.parent = GameObject.Find("_effects").transform; }
+
+        AudioSource asource = fxObj.GetComponent<AudioSource>();
+        AudioClip a = (AudioClip)Resources.Load(soundName);
+        asource.clip = a;
+        fxObj.GetComponent<SelfDestruct>().duration = asource.clip.length;
+        asource.spatialBlend = 0f;
+
+        asource.volume = 1f * 0.7f;
+
+        asource.Play();
+    }
+
 }

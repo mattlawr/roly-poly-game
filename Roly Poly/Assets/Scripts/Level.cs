@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 
     private Player player;
 
-    const float _MAX_X = 10f;
+    const float _MAX_X = 6.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +25,14 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void StartLevel(Player roly)
+    public Player StartLevel(Player roly)
     {
 
         gameObject.SetActive(true);// enable level
 
         player = Instantiate(roly, transform.position, Quaternion.identity);
+
+        return player;
     }
 
     public void LeaveLevel()

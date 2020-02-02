@@ -63,7 +63,7 @@ public class RolyPolyController : MonoBehaviour
                 return;
             }
 
-            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.4f, 0.15f);
+            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.3f, 0.2f);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
@@ -75,13 +75,29 @@ public class RolyPolyController : MonoBehaviour
             }
         }
 
+        // check wall
+        if (anchored)
+        {
+            Vector3 dir = player.GetForward();
+
+            Ray r = new Ray(transform.position-(transform.up*0.1f), dir.normalized);
+            Debug.DrawRay(r.origin, r.direction, Color.red);
+
+            RaycastHit2D rc = Physics2D.Raycast(r.origin, r.direction, 0.5f, LayerMask.GetMask("Default"));
+
+            if (rc)
+            {
+                SetAnchor(rc.normal, rc.point);
+            }
+        }
+
         player.anim.SetFloat("speed", rb.velocity.magnitude);
     }
 
     // Check for wall climbing
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Untagged" && !rolling)
+        if(collision.collider.tag == "Untagged" && collision.gameObject.layer == 0 && !rolling)
         {
             //print("anchor!");
             SetAnchor(collision.contacts[0].normal, collision.contacts[0].point);
@@ -126,7 +142,7 @@ public class RolyPolyController : MonoBehaviour
             // Check if going off edge
             if (true)
             {
-                Vector3 dir = GetForward() - transform.up * 1.5f;
+                Vector3 dir = player.GetForward() - transform.up * 1.5f;
 
                 Ray r = new Ray(transform.position, dir.normalized);
                 Debug.DrawRay(r.origin, r.direction, Color.red);
@@ -165,11 +181,13 @@ public class RolyPolyController : MonoBehaviour
         {
             rolling = true;
             player.anim.SetTrigger("roll");
+            GameManager.instance.PlaySingle("powerup");
+
             UnAnchor();
 
             // Add a force to the player.
             //m_Grounded = false;
-            rb.velocity = (targetVelocity + GetForward()/5f).normalized * rollStrength;
+            rb.velocity = (targetVelocity + player.GetForward()/5f).normalized * rollStrength;
         }
 
         lastMove = move;
@@ -186,9 +204,16 @@ public class RolyPolyController : MonoBehaviour
         transform.rotation = q;
         //print(q + ", " + norm);
 
+        float px = transform.position.x;
+
+        if(!Physics2D.Raycast(transform.position, -transform.up, 0.6f, LayerMask.GetMask("Default")))
+        {
+            px = point.x;
+        }
+
         if((Vector2)transform.position != point && transform.up.y > 0.1f)
         {
-            transform.position = new Vector2(transform.position.x, point.y + 0.5f);
+            transform.position = new Vector2(px, point.y + 0.5f);
         }
 
         correctCrawl = false;
@@ -207,8 +232,4 @@ public class RolyPolyController : MonoBehaviour
         player.SetSpriteDirection(direction);
     }
 
-    Vector3 GetForward()
-    {
-        return (player.FacingRight() ? transform.right : -transform.right);
-    }
 }

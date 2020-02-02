@@ -27,7 +27,7 @@ public class Enemy : Entity
             Ray r = new Ray(transform.position, dir.normalized);
             Debug.DrawRay(r.origin, r.direction, Color.red);
 
-            Vector3 targetVelocity = (walkSpeed * 5f) * GetForward();
+            Vector3 targetVelocity = (walkSpeed * 10f) * GetForward();
 
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, 0.1f);
 

@@ -11,6 +11,9 @@ public class RolyPolyController : MonoBehaviour
     [Range(0, 1f)] public float airControl = 0.5f;
     //public LayerMask groundLayers;
 
+    public ParticleSystem dust;
+    public TrailRenderer trail;
+
     private Player player;
     private Rigidbody2D rb;
     private Vector2 upAnchor = Vector3.up;
@@ -63,7 +66,7 @@ public class RolyPolyController : MonoBehaviour
                 return;
             }
 
-            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.3f, 0.2f);
+            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.2f, 0.3f);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
@@ -83,11 +86,13 @@ public class RolyPolyController : MonoBehaviour
             Ray r = new Ray(transform.position-(transform.up*0.1f), dir.normalized);
             Debug.DrawRay(r.origin, r.direction, Color.red);
 
-            RaycastHit2D rc = Physics2D.Raycast(r.origin, r.direction, 0.5f, LayerMask.GetMask("Default"));
+            RaycastHit2D rc = Physics2D.Raycast(r.origin, r.direction, 0.3f, LayerMask.GetMask("Default"));
 
             if (rc)
             {
                 SetAnchor(rc.normal, rc.point);
+                player.anim.SetTrigger("corner");
+                print("corner!");
             }
         }
 
@@ -157,6 +162,11 @@ public class RolyPolyController : MonoBehaviour
             // And then smoothing it out and applying it to the character
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothing);
 
+            if(rb.velocity.magnitude > 0.1f)
+            {
+                dust.Emit(1);
+            }
+
             SetDirection(moveC);
         }
 
@@ -172,6 +182,8 @@ public class RolyPolyController : MonoBehaviour
         if (release)
         {
             rolling = false;
+            trail.emitting = false;
+
             player.anim.SetTrigger("anchor");
             //print("RELEASE");
         }
@@ -182,12 +194,13 @@ public class RolyPolyController : MonoBehaviour
             rolling = true;
             player.anim.SetTrigger("roll");
             GameManager.instance.PlaySingle("powerup");
+            trail.emitting = true;
 
             UnAnchor();
 
             // Add a force to the player.
             //m_Grounded = false;
-            rb.velocity = (targetVelocity + player.GetForward()/5f).normalized * rollStrength;
+            rb.velocity = (targetVelocity + player.GetForward() / 5f).normalized * rollStrength;
         }
 
         lastMove = move;
@@ -201,6 +214,11 @@ public class RolyPolyController : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.gravityScale = 0f;
 
+        if (!CheckVector(norm))
+        {
+            Quaternion.FromToRotation(Vector2.up, Vector2.up);
+        }
+
         transform.rotation = q;
         //print(q + ", " + norm);
 
@@ -209,6 +227,10 @@ public class RolyPolyController : MonoBehaviour
         if(!Physics2D.Raycast(transform.position, -transform.up, 0.6f, LayerMask.GetMask("Default")))
         {
             px = point.x;
+            if(norm.y < 0.5f && norm.y > -0.5f && !anchored)
+            {
+                px += norm.x * 0.5f;
+            }
         }
 
         if((Vector2)transform.position != point && transform.up.y > 0.1f)
@@ -218,6 +240,19 @@ public class RolyPolyController : MonoBehaviour
 
         correctCrawl = false;
         anchored = true;
+    }
+
+    bool CheckVector(Vector2 c)
+    {
+        if (c.x < 0.8f && c.x > -0.8f)
+        {
+            if(c.y < 0.8f && c.y > -0.8f)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     void UnAnchor()

@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 
     private Player player;
 
-    const float _MAX_X = 8f;
+    const float _MAX_X = 6.5f;
 
     // Start is called before the first frame update
     void Start()

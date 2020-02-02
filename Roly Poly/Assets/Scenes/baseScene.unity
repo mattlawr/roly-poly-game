@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1507523307}
+  anim: {fileID: 0}
   health: 10
   OnHit:
     m_PersistentCalls:

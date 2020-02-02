@@ -75,6 +75,22 @@ public class RolyPolyController : MonoBehaviour
             }
         }
 
+        // check wall
+        if (anchored)
+        {
+            Vector3 dir = GetForward();
+
+            Ray r = new Ray(transform.position, dir.normalized);
+            Debug.DrawRay(r.origin, r.direction, Color.red);
+
+            RaycastHit2D rc = Physics2D.Raycast(r.origin, r.direction, 0.5f, LayerMask.GetMask("Default"));
+
+            if (rc)
+            {
+                SetAnchor(rc.normal, rc.point);
+            }
+        }
+
         player.anim.SetFloat("speed", rb.velocity.magnitude);
     }
 

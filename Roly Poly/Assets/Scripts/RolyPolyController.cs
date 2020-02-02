@@ -53,18 +53,23 @@ public class RolyPolyController : MonoBehaviour
                 if (colliders[i].gameObject != gameObject)
                 {
                     print("anchor! STAY");
-                    SetAnchor(transform.up);
+                    SetAnchor(transform.up, transform.position);
                     return;
                 }
             }
 
-            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.4f, 0.12f);
+            if(rb.velocity.magnitude > 0.1f)
+            {
+                return;
+            }
+
+            colliders = Physics2D.OverlapCircleAll(transform.position - Vector3.up * 0.4f, 0.15f);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
                 {
                     print("anchor! Ground");
-                    SetAnchor(Vector3.up);
+                    SetAnchor(Vector3.up, transform.position);
                     return;
                 }
             }
@@ -79,7 +84,7 @@ public class RolyPolyController : MonoBehaviour
         if(collision.collider.tag == "Untagged" && !rolling)
         {
             //print("anchor!");
-            SetAnchor(collision.contacts[0].normal);
+            SetAnchor(collision.contacts[0].normal, collision.contacts[0].point);
         }
 
         if (rolling && collision.collider.GetComponent<Entity>())
@@ -171,17 +176,20 @@ public class RolyPolyController : MonoBehaviour
     }
 
     // Sets controller to either stick to a wall or unstick
-    void SetAnchor(Vector2 norm)
+    void SetAnchor(Vector2 norm, Vector2 point)
     {
         Quaternion q = Quaternion.FromToRotation(Vector2.up, norm);
 
         rb.velocity = Vector3.zero;
         rb.gravityScale = 0f;
 
-        //transform.position = pos;
-
         transform.rotation = q;
         //print(q + ", " + norm);
+
+        if((Vector2)transform.position != point && transform.up.y > 0.1f)
+        {
+            transform.position = new Vector2(transform.position.x, point.y + 0.5f);
+        }
 
         correctCrawl = false;
         anchored = true;

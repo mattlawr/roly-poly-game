@@ -6,6 +6,8 @@ public class Level : MonoBehaviour
 {
     // Level types? Level win condition?
 
+    private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,16 @@ public class Level : MonoBehaviour
         
     }
 
-    public void CompleteLevel()
+    public void StartLevel(Player roly)
     {
 
+        gameObject.SetActive(true);// enable level
+
+        player = Instantiate(roly, transform.position, Quaternion.identity);
+    }
+
+    public void CompleteLevel()
+    {
+        GameObject.Destroy(player.gameObject);
     }
 }

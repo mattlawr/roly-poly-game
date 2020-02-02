@@ -36,17 +36,15 @@ public class Entity : MonoBehaviour
 
         OnHit.Invoke();
     }
-    public void TakeDamage(int dmg, Vector2 force)
+    public virtual void TakeDamage(int dmg, Vector2 force)
     {
-        health -= dmg;
-
         // Push this
         if (GetComponent<Rigidbody2D>())
         {
-
+            GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         }
 
-        OnHit.Invoke();
+        TakeDamage(dmg);
     }
 
     // -1 = left, +1 = right

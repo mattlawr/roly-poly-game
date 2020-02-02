@@ -25,6 +25,8 @@ public class HeartBar : MonoBehaviour
                 heartSprites[i] = transform.GetChild(i).GetComponent<SpriteRenderer>();
             }
         }
+
+        UpdateHearts(0);
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class HeartBar : MonoBehaviour
         {
             if(i < hearts)
             {
-                heartSprites[i].color = Color.red;
+                heartSprites[i].color = Color.white;
             } else
             {
                 heartSprites[i].color = Color.black;

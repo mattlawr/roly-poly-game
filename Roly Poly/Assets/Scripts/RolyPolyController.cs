@@ -18,12 +18,20 @@ public class RolyPolyController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 upAnchor = Vector3.up;
     private Vector3 velocity = Vector3.zero;
+
     bool anchored = false;
-    bool rolling = false;
+
+    [System.NonSerialized]
+    public bool rolling = false;
+    float rollCharge = 0f;
+
     private Vector2 lastMove = Vector3.zero;
     private bool correctCrawl = false;
 
     private float gravity = 0f;
+
+    [System.NonSerialized]
+    public bool stunned = false;
 
     [Header("Events")]
     [Space]
@@ -46,6 +54,13 @@ public class RolyPolyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rollCharge -= Time.fixedDeltaTime;
+
+        if (stunned)
+        {
+            return;
+        }
+
         if (!rolling && !anchored)
         {
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -102,13 +117,20 @@ public class RolyPolyController : MonoBehaviour
     // Check for wall climbing
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (stunned)
+        {
+            return;
+        }
+
         if(collision.collider.tag == "Untagged" && collision.gameObject.layer == 0 && !rolling)
         {
             //print("anchor!");
             SetAnchor(collision.contacts[0].normal, collision.contacts[0].point);
         }
 
-        if (rolling && collision.collider.GetComponent<Entity>())
+        float diff = Mathf.Abs(Vector3.Angle(-collision.contacts[0].normal, rb.velocity.normalized));
+
+        if (rolling && (rollCharge > 0f || rb.velocity.magnitude > 1f) && diff < 15f && collision.collider.GetComponent<Entity>())
         {
             collision.collider.GetComponent<Entity>().TakeDamage(1);
         }
@@ -192,6 +214,8 @@ public class RolyPolyController : MonoBehaviour
         if (anchored && roll)
         {
             rolling = true;
+            rollCharge = 0.3f;
+
             player.anim.SetTrigger("roll");
             GameManager.instance.PlaySingle("powerup");
             trail.emitting = true;
@@ -240,6 +264,15 @@ public class RolyPolyController : MonoBehaviour
 
         correctCrawl = false;
         anchored = true;
+    }
+
+    public void Stun(bool a)
+    {
+        stunned = a;
+        if (a)
+        {
+            UnAnchor();
+        }
     }
 
     bool CheckVector(Vector2 c)

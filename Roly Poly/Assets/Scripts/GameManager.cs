@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public Transform levelsParent;
     private Level[] levels;
 
+    public HeartBar hearts;
+
     private Transform worldMap;
     private Vector3 firstPos;
 
@@ -95,6 +97,10 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void HeartsAdd(int d)
+    {
+        hearts.UpdateHearts(d);
+    }
 
     //******** SOUND
 

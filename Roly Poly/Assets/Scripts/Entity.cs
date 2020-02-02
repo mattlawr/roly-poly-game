@@ -6,9 +6,10 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviour
 {
     public SpriteRenderer sprite;
+    public Animator anim;
     public int health = 10;
 
-    const bool _FACELEFT = false;    // Which direction sprite images face
+    const bool _FACELEFT = true;    // Which direction sprite images face
 
     [Header("Events")]
     [Space]

@@ -70,7 +70,7 @@ public class RolyPolyController : MonoBehaviour
             }
         }
 
-        
+        player.anim.SetFloat("speed", rb.velocity.magnitude);
     }
 
     // Check for wall climbing
@@ -111,8 +111,8 @@ public class RolyPolyController : MonoBehaviour
             // Move the character by finding the target velocity using (correction)
             //targetVelocity = Quaternion.Euler(transform.rotation.eulerAngles) * new Vector2(moveC * speed * 100f, 0);
 
-            // Override with real directions after player changes inputs
-            if (lastMove != move || correctCrawl)
+            // Override with real directions NOT after player changes inputs
+            if (true || lastMove != move || correctCrawl)
             {
                 targetVelocity = (move * speed * 100f) * transform.right * trueVertical;
                 correctCrawl = true;
@@ -151,6 +151,7 @@ public class RolyPolyController : MonoBehaviour
         if (release)
         {
             rolling = false;
+            player.anim.SetTrigger("anchor");
             //print("RELEASE");
         }
 
@@ -158,6 +159,7 @@ public class RolyPolyController : MonoBehaviour
         if (anchored && roll)
         {
             rolling = true;
+            player.anim.SetTrigger("roll");
             UnAnchor();
 
             // Add a force to the player.

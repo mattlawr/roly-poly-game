@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    // Level types? Level win condition?
+    public Sprinkler worldSprinkler;
 
     private Player player;
 
@@ -42,5 +42,15 @@ public class Level : MonoBehaviour
         GameManager.instance.ExitLevel();
 
         gameObject.SetActive(false);
+    }
+
+    public void CompleteLevel()
+    {
+        //GameObject.Destroy(player.gameObject);
+        player.controller.Stun(true);
+
+        GameManager.instance.StartCoroutine("StopLevel");
+
+        worldSprinkler.On();
     }
 }

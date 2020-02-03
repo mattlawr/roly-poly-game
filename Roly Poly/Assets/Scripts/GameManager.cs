@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         hearts.UpdateHearts(d);
     }
 
-    public IEnumerator RestartLevel()
+    public IEnumerator StopLevel()
     {
         yield return new WaitForSeconds(3f);
 

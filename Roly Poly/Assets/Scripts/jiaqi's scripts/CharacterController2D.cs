@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A simple controller for animating a 4 directional sprite using Physics.
 /// </summary>
-public class CharacterController2D : MonoBehaviour
+public class CharacterController2D : Entity
 {
     public float speed = 100;
     Rigidbody2D rb;
@@ -33,5 +33,7 @@ public class CharacterController2D : MonoBehaviour
         Vector3 tempVect = new Vector3(h, v, 0);
         tempVect = tempVect * speed * Time.deltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
+
+        SetSpriteDirection(h);
     }
 }

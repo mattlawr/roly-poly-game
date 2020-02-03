@@ -81,6 +81,6 @@ public class Player : Entity
 
         anim.SetTrigger("die");
 
-        GameManager.instance.StartCoroutine("RestartLevel");
+        GameManager.instance.StartCoroutine("StopLevel");
     }
 }

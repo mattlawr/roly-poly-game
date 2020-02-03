@@ -158,6 +158,12 @@ MonoBehaviour:
     type: 3}
   anim: {fileID: 6997885286911450553}
   health: 1
+  sounds:
+  - {fileID: 8300000, guid: a156fb4d7b5e9c241aa743f5a5338f7c, type: 3}
+  - {fileID: 8300000, guid: d042f5054c084ce48a400ca38f4e2055, type: 3}
+  - {fileID: 8300000, guid: b94be610727260c42943f2bb56d92e57, type: 3}
+  - {fileID: 8300000, guid: 806c09c7d4e9d614098ae068b740de0d, type: 3}
+  - {fileID: 8300000, guid: 5c9c97d16a2025c419b03b78ae39641d, type: 3}
   OnHit:
     m_PersistentCalls:
       m_Calls:

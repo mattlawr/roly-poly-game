@@ -10,6 +10,8 @@ public class Entity : MonoBehaviour
     public Animator anim;
     public int health = 10;
 
+    public AudioClip[] sounds = new AudioClip[0];
+
     const bool _FACELEFT = true;    // Which direction sprite images face
 
     [Header("Events")]
@@ -42,6 +44,11 @@ public class Entity : MonoBehaviour
         if (GetComponent<Rigidbody2D>())
         {
             GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        }
+
+        if(sounds.Length > 0)
+        {
+            GameManager.instance.PlaySingle(sounds[Random.Range(0, sounds.Length)].name);
         }
 
         TakeDamage(dmg);

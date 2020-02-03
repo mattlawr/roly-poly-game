@@ -128,10 +128,12 @@ public class RolyPolyController : MonoBehaviour
             SetAnchor(collision.contacts[0].normal, collision.contacts[0].point);
         }
 
-        float diff = Mathf.Abs(Vector3.Angle(-collision.contacts[0].normal, -collision.contacts[0].relativeVelocity));
+        float diff = Mathf.Abs(Vector3.Angle(-collision.contacts[0].normal, player.GetForward()));
 
-        if (rolling && (rollCharge > 0f || rb.velocity.magnitude > 1f) && diff < 15f && collision.collider.GetComponent<Entity>())
+        if (rolling && (rollCharge > 0f || rb.velocity.magnitude > 1f) && (diff < 15f || collision.collider.tag == "Enemy") && collision.collider.GetComponent<Entity>())
         {
+            print("PASS");
+
             collision.collider.GetComponent<Entity>().TakeDamage(1);
         }
     }
@@ -195,8 +197,6 @@ public class RolyPolyController : MonoBehaviour
         // Air movement
         if(!anchored && airControl > 0f)
         {
-
-
             targetVelocity = new Vector2 ((move.x * speed * airControl * 10f), 0f);
 
             rb.velocity = rb.velocity + (Vector2)targetVelocity;

@@ -62,6 +62,11 @@ public class Level : MonoBehaviour
 
         GameManager.instance.StartCoroutine("StopLevel");
 
+        if (!worldSprinkler)
+        {
+            return;
+        }
+
         worldSprinkler.On();
     }
 }

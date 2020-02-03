@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 708919495442623996}
   m_Layer: 9
   m_Name: enemy_goop 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
     type: 3}
   anim: {fileID: 8603413899702840296}
   health: 1
+  sounds: []
   OnHit:
     m_PersistentCalls:
       m_Calls:

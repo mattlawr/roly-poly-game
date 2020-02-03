@@ -71,7 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbac3273237c5b84ea6c075e18ee870d, type: 3}
+  m_Sprite: {fileID: -2372938531549053325, guid: 87c6ec7ff7e577949a73501ff15087ea,
+    type: 3}
   m_Color: {r: 1, g: 0.9227282, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,18 +96,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.13320875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.4, y: 0.4}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.7335825}
   m_EdgeRadius: 0
 --- !u!114 &2852020240170282918
 MonoBehaviour:
@@ -125,6 +126,7 @@ MonoBehaviour:
     type: 3}
   anim: {fileID: 0}
   health: 1
+  sounds: []
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -143,7 +145,7 @@ MonoBehaviour:
         m_MethodName: set_sprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 5d66abd01088a10448e0130fdcd33237,
+          m_ObjectArgument: {fileID: -3975624549204834352, guid: 87c6ec7ff7e577949a73501ff15087ea,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0

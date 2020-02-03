@@ -35,7 +35,7 @@ public class Enemy : Entity
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, 0.1f);
 
             // If hit edge OR wall
-            if (!Physics2D.Raycast(r.origin, r.direction, 1f, LayerMask.GetMask("Default")) || Physics2D.Raycast(r.origin, GetForward(), 0.6f, LayerMask.GetMask("Default")))
+            if (!Physics2D.Raycast(r.origin, r.direction, 1f, LayerMask.GetMask("Default")) || Physics2D.Raycast(r.origin, GetForward(), 0.9f, LayerMask.GetMask("Default")))
             {
                 SetSpriteDirection(FacingRight() ? -1f : 1f);
             }

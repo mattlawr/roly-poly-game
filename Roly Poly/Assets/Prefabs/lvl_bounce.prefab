@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2852020240170282916}
   - component: {fileID: 2852020240170282917}
   - component: {fileID: 2852020240170282918}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: lvl_bounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,6 +124,7 @@ MonoBehaviour:
   fxPrefab: {fileID: 0}
   anim: {fileID: 0}
   health: 1
+  sounds: []
   OnHit:
     m_PersistentCalls:
       m_Calls: []

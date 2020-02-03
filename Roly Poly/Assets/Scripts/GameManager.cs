@@ -109,6 +109,8 @@ public class GameManager : MonoBehaviour
     {
         ResetCamera();
 
+        HeartsAdd(10);
+
         PlaySong(mainSong);
         worldMap.gameObject.SetActive(true);
 
@@ -124,8 +126,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         levels[currLevel].LeaveLevel();
-
-        HeartsAdd(10);
 
         yield return null;
     }

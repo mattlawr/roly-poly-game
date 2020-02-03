@@ -8,6 +8,8 @@ public class Level : MonoBehaviour
 
     public AudioClip song;
 
+    public Transform startObj;
+
     private Player player;
 
     const float _MAX_X = 6.5f;
@@ -32,7 +34,14 @@ public class Level : MonoBehaviour
 
         gameObject.SetActive(true);// enable level
 
-        player = Instantiate(roly, transform.position+Vector3.up*3f, Quaternion.identity);
+        Vector3 startPos = transform.position + Vector3.up * 3f;
+
+        if (startObj)
+        {
+            startPos = startObj.position;
+        }
+
+        player = Instantiate(roly, startPos, Quaternion.identity);
 
         return player;
     }

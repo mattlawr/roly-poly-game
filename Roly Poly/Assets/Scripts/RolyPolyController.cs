@@ -193,8 +193,10 @@ public class RolyPolyController : MonoBehaviour
         }
 
         // Air movement
-        if(!anchored && rolling && airControl > 0f)
+        if(!anchored && airControl > 0f)
         {
+
+
             targetVelocity = new Vector2 ((move.x * speed * airControl * 10f), 0f);
 
             rb.velocity = rb.velocity + (Vector2)targetVelocity;

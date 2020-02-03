@@ -6,6 +6,8 @@ public class Level : MonoBehaviour
 {
     public Sprinkler worldSprinkler;
 
+    public AudioClip song;
+
     private Player player;
 
     const float _MAX_X = 6.5f;

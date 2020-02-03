@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6891490347959619369
 Transform:
   m_ObjectHideFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldSprinkler: {fileID: 0}
+  song: {fileID: 8300000, guid: 97095901eab0d254e9281a8b453a1c5f, type: 3}
 --- !u!1 &8206558741931862459
 GameObject:
   m_ObjectHideFlags: 0

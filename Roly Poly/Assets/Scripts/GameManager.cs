@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform levelsParent;
     private Level[] levels;
     int currLevel = 0;
+    public AudioClip mainSong;
 
     public HeartBar hearts;
 
@@ -56,6 +57,8 @@ public class GameManager : MonoBehaviour
                 levels[i] = levelsParent.GetChild(i).GetComponent<Level>();
             }
         }
+
+        PlaySong(mainSong);
     }
 
     // Update is called once per frame
@@ -76,6 +79,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlaySong(AudioClip clip)
+    {
+        if (!clip) { return; }
+
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = clip;
+        GetComponent<AudioSource>().Play();
+    }
+
     void ResetCamera()
     {
         transform.position = firstPos;
@@ -89,6 +101,7 @@ public class GameManager : MonoBehaviour
 
         currLevel = id;
 
+        PlaySong(levels[id].song);
         roly = levels[id].StartLevel(rolySidePrefab);
     }
 
@@ -96,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         ResetCamera();
 
+        PlaySong(mainSong);
         worldMap.gameObject.SetActive(true);
 
     }

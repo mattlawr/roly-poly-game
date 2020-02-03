@@ -14,11 +14,14 @@ public class Enemy : Entity
     // Start is called before the first frame update
     void Start()
     {
+        if (!GetComponent<Rigidbody2D>()) { return; }
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
+        if (!anim) { return; }
+
         // check for edge and walk back and forth
         if (walk)
         {

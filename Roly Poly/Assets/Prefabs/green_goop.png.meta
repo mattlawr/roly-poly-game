@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: bd1c74a8525687a4191a1d27801c9252
+guid: a56e51b26ec9ef4479700fe9afa5dbb8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1999263715911734581
-    second: roly-poly-walk_0
+      213: 6075664412687681883
+    second: green_goop_0
   - first:
-      213: 8898261460278287151
-    second: roly-poly-walk_1
+      213: 9117231319867919178
+    second: green_goop_1
   - first:
-      213: 5480312291587492760
-    second: roly-poly-walk_2
+      213: 8507641204236324569
+    second: green_goop_2
   - first:
-      213: 533942541053910294
-    second: roly-poly-walk_3
-  - first:
-      213: -6474084793278465497
-    second: roly-poly-walk_4
-  - first:
-      213: 1873585894288143842
-    second: roly-poly-walk_5
+      213: 2574676259277688377
+    second: green_goop_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -63,9 +57,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -81,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,19 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: roly-poly-walk_0
+      name: green_goop_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbf27f09bfce494da8352befd0d8d3a
-      internalID: 1999263715911734581
+      spriteID: 2e7cbb1fde6b21c4f88a0a6c2e03dc0d
+      internalID: 6075664412687681883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roly-poly-walk_1
+      name: green_goop_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c1b01b389380048956c7244b1cd1ee
-      internalID: 8898261460278287151
+      spriteID: 6ae443b8a740527478194aba9d5eee00
+      internalID: 9117231319867919178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roly-poly-walk_2
+      name: green_goop_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +154,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ac5c73c95f70364db36f8ef3c62567e
-      internalID: 5480312291587492760
+      spriteID: 27fc9973b7a0eb24ea0f2f98243cbbf2
+      internalID: 8507641204236324569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roly-poly-walk_3
+      name: green_goop_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,50 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6416b8188355bdf488c327cbc936aeae
-      internalID: 533942541053910294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: roly-poly-walk_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8cd1d8e4adbdb5447b047a3169a59939
-      internalID: -6474084793278465497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: roly-poly-walk_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d849a4286047bdd4e980dbc74be0109c
-      internalID: 1873585894288143842
+      spriteID: 7491cf149effe694a91cb9a25ea3f666
+      internalID: 2574676259277688377
       vertices: []
       indices: 
       edges: []

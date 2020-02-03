@@ -206,7 +206,7 @@ public class RolyPolyController : MonoBehaviour
             rolling = false;
             trail.emitting = false;
 
-            player.anim.SetTrigger("anchor");
+            player.anim.SetTrigger("release");
             //print("RELEASE");
         }
 
@@ -217,6 +217,7 @@ public class RolyPolyController : MonoBehaviour
             rollCharge = 0.3f;
 
             player.anim.SetTrigger("roll");
+            player.anim.ResetTrigger("release");
             GameManager.instance.PlaySingle("powerup");
             trail.emitting = true;
 
@@ -242,6 +243,8 @@ public class RolyPolyController : MonoBehaviour
         {
             Quaternion.FromToRotation(Vector2.up, Vector2.up);
         }
+
+        player.anim.SetTrigger("anchor");
 
         transform.rotation = q;
         //print(q + ", " + norm);

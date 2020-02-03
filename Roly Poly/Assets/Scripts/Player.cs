@@ -64,6 +64,8 @@ public class Player : Entity
         controller.Stun(true);
         hitstun = 0.6f;
 
+        anim.SetTrigger("hurt");
+
         base.TakeDamage(d, force);
 
         if(health <= 0)
@@ -76,6 +78,8 @@ public class Player : Entity
     {
         controller.Stun(true);
         hitstun = 100f;
+
+        anim.SetTrigger("die");
 
         GameManager.instance.StartCoroutine("RestartLevel");
     }

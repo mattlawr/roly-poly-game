@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
         fxObj.GetComponent<SelfDestruct>().duration = asource.clip.length;
         asource.spatialBlend = 0f;
 
-        asource.volume = 0.5f * 0.7f;
+        asource.volume = 1f * 0.7f;
 
         asource.Play();
     }

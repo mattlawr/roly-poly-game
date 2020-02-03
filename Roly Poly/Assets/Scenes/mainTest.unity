@@ -982,7 +982,7 @@ RectTransform:
   m_Children:
   - {fileID: 1443370103}
   m_Father: {fileID: 6644975729383515170}
-  m_RootOrder: 17
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1534,7 +1534,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.839
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2074,7 +2074,7 @@ PrefabInstance:
     - target: {fileID: 3494197132924242946, guid: 53056eee54a3b8a4b803f1700ac0a828,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3494197132924242951, guid: 53056eee54a3b8a4b803f1700ac0a828,
         type: 3}
@@ -2110,6 +2110,26 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 233130826871622202, guid: 53056eee54a3b8a4b803f1700ac0a828,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723797376398362081, guid: 53056eee54a3b8a4b803f1700ac0a828,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 440354721278733951, guid: 53056eee54a3b8a4b803f1700ac0a828,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115424420615644516, guid: 53056eee54a3b8a4b803f1700ac0a828,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53056eee54a3b8a4b803f1700ac0a828, type: 3}

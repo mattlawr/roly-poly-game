@@ -570,7 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3884481185255818957}
-  fxPrefab: {fileID: 0}
+  fxPrefab: {fileID: 3303268692281233509, guid: 913b31f9816e79a43a4510cf047904c7,
+    type: 3}
   anim: {fileID: 0}
   health: 1
   sounds: []
@@ -580,6 +581,17 @@ MonoBehaviour:
       - m_Target: {fileID: 3884481185255818958}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3884481185255818959}
+        m_MethodName: SpawnFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1094,7 +1106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3884481185549605024}
-  fxPrefab: {fileID: 0}
+  fxPrefab: {fileID: 3303268692281233509, guid: 913b31f9816e79a43a4510cf047904c7,
+    type: 3}
   anim: {fileID: 0}
   health: 1
   sounds: []
@@ -1104,6 +1117,17 @@ MonoBehaviour:
       - m_Target: {fileID: 3884481185549605029}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3884481185549605026}
+        m_MethodName: SpawnFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1362,7 +1386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3884481185842624622}
-  fxPrefab: {fileID: 0}
+  fxPrefab: {fileID: 3303268692281233509, guid: 913b31f9816e79a43a4510cf047904c7,
+    type: 3}
   anim: {fileID: 0}
   health: 1
   sounds: []
@@ -1372,6 +1397,17 @@ MonoBehaviour:
       - m_Target: {fileID: 3884481185842624611}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3884481185842624608}
+        m_MethodName: SpawnFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -7,7 +7,7 @@ public class Hole : MonoBehaviour
 {
     public GameObject Button;
 
-    public bool open = false;
+    public bool open = true;
 
     [Header("Events")]
     [Space]
@@ -24,7 +24,7 @@ public class Hole : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (open && collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             Button.SetActive(true);
         }
@@ -32,9 +32,14 @@ public class Hole : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (open && collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             Button.SetActive(false);
         }
+    }
+
+    public void OpenHole()
+    {
+        open = true;
     }
 }
